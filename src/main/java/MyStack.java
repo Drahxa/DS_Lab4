@@ -39,10 +39,10 @@ public class MyStack<T>
 	 */
 	public T top()
 	{
-		if(head.isEmpty()) {
+		if(isEmpty()) {
 			throw new StackUnderFlowException();
 		} else {
-			return head.next;
+			return head.val;
 		}
 		
 		
@@ -55,8 +55,13 @@ public class MyStack<T>
 	 */
 	public T pop()
 	{
-		return head.next;
+		
+		if(isEmpty()) { throw new StackUnderFlowException();}
+		
+		T temp = head.val;
 		head.next = head.next.next;
+		
+		return temp;
 		
 	}
 
@@ -66,7 +71,7 @@ public class MyStack<T>
 	 */
 	public boolean isEmpty()
 	{
-		if(head.next == null) { return true;}
+		if(head == null) { return true;}
 		return false;
 	}
 
