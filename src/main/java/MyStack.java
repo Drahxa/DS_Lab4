@@ -1,10 +1,23 @@
 
 public class MyStack<T>
 {
-
+	
+	public class Node{
+		T val;
+		Node next;
+		
+		Node(T val, Node next){
+			this.val = val;
+			this.next = next;
+		}
+	}
+	
+	Node head;
+	
 	public MyStack()
 	{
-
+		head = null;
+		
 	}
 
 	/**
@@ -13,7 +26,11 @@ public class MyStack<T>
 	 */
 	public void push(T val)
 	{
-
+		if(head == null) {
+			head = new Node (val, null);
+		} else {
+			head = new Node (val, head);
+		}
 	}
 
 	/**
@@ -22,8 +39,13 @@ public class MyStack<T>
 	 */
 	public T top()
 	{
-
-		return null;
+		if(head.isEmpty()) {
+			throw new StackUnderFlowException();
+		} else {
+			return head.next;
+		}
+		
+		
 	}
 
 	/**
@@ -33,7 +55,9 @@ public class MyStack<T>
 	 */
 	public T pop()
 	{
-		return null;
+		return head.next;
+		head.next = head.next.next;
+		
 	}
 
 	/**
@@ -42,7 +66,9 @@ public class MyStack<T>
 	 */
 	public boolean isEmpty()
 	{
-		return true;
+		if(head.next == null) { return true;}
+		return false;
 	}
 
 }
+
