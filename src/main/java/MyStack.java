@@ -59,7 +59,7 @@ public class MyStack<T>
 		if(isEmpty()) { throw new StackUnderFlowException();}
 		
 		T temp = head.val;
-		head.next = head.next.next;
+		head = head.next;
 		
 		return temp;
 		
